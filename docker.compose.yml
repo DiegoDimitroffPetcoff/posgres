@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+
+  posgres:
+    image: postgres
+    restart: always
+    ports:
+     -"5432:5432"
+    environment:
+      DATABASE_HOST: 127.0.0.1
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: example
+      POSTGRES_DB: example
+
+  pgadmin:
+    image: dpage/pgadmin4
+    enviroment:
+      PGADMIN_DEFAULT_EMAIL: "diegodimitroffpetcoff@gmail.com"
+      PGADMIN_DEFAULT_PASSWORD: example
+   
+    ports:
+      - 80:80
+    depens_on:
+      - posgres
